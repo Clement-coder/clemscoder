@@ -36,6 +36,7 @@ const Nav = () => {
           aria-label="home"
           className="group flex items-center gap-2 select-none"
           whileHover="hover"
+          whileTap="hover"
           initial="rest"
           animate="rest"
         >
