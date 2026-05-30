@@ -14,7 +14,8 @@ export default {
         green: '#64ffda',
       },
       fontFamily: {
-        mono: ['SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'SF Mono', 'Fira Code', 'monospace'],
       },
       transitionTimingFunction: {
         'ease-custom': 'cubic-bezier(0.645, 0.045, 0.355, 1)',
