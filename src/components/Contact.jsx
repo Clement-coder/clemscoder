@@ -46,8 +46,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 max-w-xl mx-auto text-center">
       <Toaster position="top-right" />
-      <p className="font-mono text-green text-sm mb-4">04. What's Next?</p>
-      <h2 className="text-lightest-slate text-5xl font-bold mb-6">Get In Touch</h2>
+      <h2 className="numbered-heading">Get In Touch</h2>
       <p className="text-slate text-lg mb-8">
         I'm currently open to new opportunities. Whether you have a question, a project idea, or
         just want to say hi — my inbox is always open!
