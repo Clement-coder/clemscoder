@@ -14,7 +14,7 @@ export default {
         green: '#64ffda',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'SF Mono', 'Fira Code', 'monospace'],
       },
       transitionTimingFunction: {

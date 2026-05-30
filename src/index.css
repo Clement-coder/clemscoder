@@ -16,7 +16,7 @@ html {
 body {
   background-color: #0a192f;
   color: #8892b0;
-  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-size: 20px;
   line-height: 1.3;
   -webkit-font-smoothing: antialiased;
@@ -24,8 +24,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  letter-spacing: -0.02em;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  letter-spacing: -0.03em;
 }
 
 ::-webkit-scrollbar {
