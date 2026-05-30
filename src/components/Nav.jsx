@@ -43,7 +43,7 @@ const Nav = () => {
           <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 100 100"
-            className="w-14 h-14 flex-shrink-0"
+            className="w-9 h-9 flex-shrink-0"
             variants={{ rest: { rotate: 0 }, hover: { rotate: 360 } }}
             transition={{ duration: 0.6, ease: 'easeInOut' }}
           >

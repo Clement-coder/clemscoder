@@ -14,11 +14,15 @@ const Hero = () => (
       Hi, my name is
     </motion.p>
 
-    <motion.h1 {...fadeUp(0.3)} className="text-5xl sm:text-6xl md:text-7xl font-bold text-lightest-slate leading-tight mb-4">
-      Clement Raymond.
+    <motion.h1 {...fadeUp(0.3)} className="text-4xl sm:text-6xl md:text-7xl font-bold text-lightest-slate leading-tight mb-4 whitespace-nowrap">
+      <img
+        src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=48&pause=1000&color=CCD6F6&center=false&vCenter=true&width=520&height=60&lines=Clement+Raymond."
+        alt="Clement Raymond."
+        className="inline-block max-w-full"
+      />
     </motion.h1>
 
-    <motion.h2 {...fadeUp(0.4)} className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate leading-tight mb-8">
+    <motion.h2 {...fadeUp(0.4)} className="text-2xl sm:text-4xl md:text-5xl font-bold text-slate leading-tight mb-8">
       I build for the web, mobile & blockchain.
     </motion.h2>
 
