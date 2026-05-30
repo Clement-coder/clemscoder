@@ -103,7 +103,7 @@ const other = [
     description: 'Personal developer portfolio built from scratch — pixel-perfect, fully responsive, animated, and blazing fast.',
     tags: ['React', 'Tailwind', 'Framer Motion', 'Vite'],
     github: 'https://github.com/Clement-coder/clement-v2',
-    live: 'https://clement-raymond.vercel.app/',
+    live: 'https://clemscoder.vercel.app/',
   },
   {
     title: 'Web3 Contract Collection',
