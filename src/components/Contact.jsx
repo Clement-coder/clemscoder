@@ -1,14 +1,68 @@
-import React, { useEffect, useRef, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import emailjs from '@emailjs/browser';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, CheckCircle, XCircle, Loader, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const WHATSAPP_NUMBER = '2347071663687';
+
+// Custom glassmorphic toast
+const Toast = ({ message, type, onClose }) => {
+  const icons = { success: <CheckCircle size={16} className="text-green flex-shrink-0" />, error: <XCircle size={16} className="text-red-400 flex-shrink-0" />, loading: <Loader size={16} className="text-green flex-shrink-0 animate-spin" /> };
+  const dragY = useRef(0);
+  return (
+    <motion.div
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -60, opacity: 0 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      drag="y"
+      dragConstraints={{ top: -100, bottom: 10 }}
+      dragElastic={{ top: 0.5, bottom: 0 }}
+      onDragEnd={(_, info) => { if (info.offset.y < -30) onClose(); }}
+      className="flex items-center gap-3 px-4 py-3 rounded-lg cursor-grab active:cursor-grabbing select-none"
+      style={{
+        background: 'rgba(17,34,64,0.80)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        border: '1px solid rgba(100,255,218,0.2)',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(100,255,218,0.08)',
+        fontFamily: 'Geist Mono, monospace',
+        fontSize: '13px',
+        color: '#ccd6f6',
+        minWidth: '280px',
+        maxWidth: '420px',
+      }}
+    >
+      {icons[type]}
+      <span className="flex-1">{message}</span>
+      <button onClick={onClose} className="text-slate/50 hover:text-green transition-colors ml-2">
+        <X size={14} />
+      </button>
+    </motion.div>
+  );
+};
+
+const useToast = () => {
+  const [toasts, setToasts] = useState([]);
+  const remove = useCallback((id) => setToasts(t => t.filter(x => x.id !== id)), []);
+  const show = useCallback((message, type = 'success', duration = 3500) => {
+    const id = Date.now();
+    setToasts(t => [...t, { id, message, type }]);
+    if (type !== 'loading') setTimeout(() => remove(id), duration);
+    return id;
+  }, [remove]);
+  const update = useCallback((id, message, type) => {
+    setToasts(t => t.map(x => x.id === id ? { ...x, message, type } : x));
+    setTimeout(() => remove(id), 3500);
+  }, [remove]);
+  return { toasts, show, update, remove };
+};
 
 const Contact = () => {
   const ref = useRef(null);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sending, setSending] = useState(false);
+  const { toasts, show, update, remove } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,11 +76,11 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
-      toast.error('Please fill in all fields.');
+      show('Please fill in all fields.', 'error');
       return;
     }
     setSending(true);
-    const id = toast.loading('Sending...');
+    const id = show('Sending...', 'loading');
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -34,10 +88,10 @@ const Contact = () => {
         form,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
-      toast.success('Message sent!', { id });
+      update(id, 'Message sent!', 'success');
       setForm({ name: '', email: '', message: '' });
     } catch {
-      toast.error('Failed to send. Try emailing directly.', { id });
+      update(id, 'Failed to send. Try emailing directly.', 'error');
     } finally {
       setSending(false);
     }
@@ -45,34 +99,12 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 max-w-xl mx-auto text-center">
-      <Toaster
-        position="top-center"
-        toastOptions={{
-          style: {
-            width: '100%',
-            maxWidth: '480px',
-            background: 'rgba(17, 34, 64, 0.75)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-            border: '1px solid rgba(100, 255, 218, 0.2)',
-            borderRadius: '8px',
-            color: '#ccd6f6',
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: '13px',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(100,255,218,0.1)',
-            padding: '14px 18px',
-          },
-          success: {
-            iconTheme: { primary: '#64ffda', secondary: '#0a192f' },
-          },
-          error: {
-            iconTheme: { primary: '#ff6b6b', secondary: '#0a192f' },
-          },
-          loading: {
-            iconTheme: { primary: '#64ffda', secondary: '#0a192f' },
-          },
-        }}
-      />
+      {/* Toast portal */}
+      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 items-center">
+        <AnimatePresence>
+          {toasts.map(t => <Toast key={t.id} {...t} onClose={() => remove(t.id)} />)}
+        </AnimatePresence>
+      </div>
       <h2 className="numbered-heading">Get In Touch</h2>
       <p className="text-slate text-lg mb-8">
         I'm currently open to new opportunities. Whether you have a question, a project idea, or
