@@ -66,7 +66,6 @@ const Nav = () => {
                 delay: rotation === 360 ? 0.3 : 0,
               }}
             >
-            >
               <polygon
                 points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"
                 fill="none"
