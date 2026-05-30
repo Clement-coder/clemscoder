@@ -13,6 +13,19 @@ const navLinks = [
 const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [rotation, setRotation] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    // Spin once on load
+    setRotation(360);
+  }, []);
+
+  const handleHoverStart = () => {
+    setIsHovered(true);
+    setRotation(r => r + 360);
+  };
+  const handleHoverEnd = () => setIsHovered(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -31,10 +44,13 @@ const Nav = () => {
     >
       <nav className="flex items-center justify-between max-w-[1600px] mx-auto">
         {/* Logo */}
-        <motion.a
+        <a
           href="/"
           aria-label="home"
           className="group flex items-center gap-2 select-none"
+          onMouseEnter={handleHoverStart}
+          onMouseLeave={handleHoverEnd}
+          onTouchStart={handleHoverStart}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,11 +59,13 @@ const Nav = () => {
           >
             <motion.g
               style={{ transformOrigin: '50px 50px' }}
-              initial={{ rotate: 0 }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1.2, ease: 'easeInOut', delay: 0.3 }}
-              whileHover={{ rotate: 720 }}
-              whileTap={{ rotate: 720 }}
+              animate={{ rotate: rotation }}
+              transition={{
+                duration: rotation === 360 ? 1.2 : 0.5,
+                ease: 'easeInOut',
+                delay: rotation === 360 ? 0.3 : 0,
+              }}
+            >
             >
               <polygon
                 points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"
@@ -84,7 +102,7 @@ const Nav = () => {
               Clement&nbsp;<span className="text-lightest-slate">Raymond</span>
             </motion.span>
           </div>
-        </motion.a>
+        </a>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
