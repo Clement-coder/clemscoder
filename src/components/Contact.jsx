@@ -45,7 +45,34 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 max-w-xl mx-auto text-center">
-      <Toaster position="top-right" />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            width: '100%',
+            maxWidth: '480px',
+            background: 'rgba(17, 34, 64, 0.75)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid rgba(100, 255, 218, 0.2)',
+            borderRadius: '8px',
+            color: '#ccd6f6',
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: '13px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(100,255,218,0.1)',
+            padding: '14px 18px',
+          },
+          success: {
+            iconTheme: { primary: '#64ffda', secondary: '#0a192f' },
+          },
+          error: {
+            iconTheme: { primary: '#ff6b6b', secondary: '#0a192f' },
+          },
+          loading: {
+            iconTheme: { primary: '#64ffda', secondary: '#0a192f' },
+          },
+        }}
+      />
       <h2 className="numbered-heading">Get In Touch</h2>
       <p className="text-slate text-lg mb-8">
         I'm currently open to new opportunities. Whether you have a question, a project idea, or
