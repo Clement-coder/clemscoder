@@ -35,10 +35,6 @@ const Nav = () => {
           href="/"
           aria-label="home"
           className="group flex items-center gap-2 select-none"
-          whileHover="hover"
-          whileTap="hover"
-          initial="rest"
-          animate="rest"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,19 +43,21 @@ const Nav = () => {
           >
             <motion.g
               style={{ transformOrigin: '50px 50px' }}
-              variants={{ rest: { rotate: 0 }, hover: { rotate: 360 } }}
-              transition={{ duration: 0.6, ease: 'easeInOut' }}
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.2 }}
+              whileHover={{ rotate: 720 }}
+              whileTap={{ rotate: 720 }}
             >
-              <motion.polygon
+              <polygon
                 points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"
                 fill="none"
                 stroke="#64ffda"
                 strokeWidth="5"
-                variants={{ rest: { opacity: 1 }, hover: { opacity: 0.4 } }}
               />
-              <motion.polygon
+              <polygon
                 points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"
-                variants={{ rest: { fill: 'transparent' }, hover: { fill: 'rgba(100,255,218,0.1)' } }}
+                fill="transparent"
                 stroke="none"
               />
             </motion.g>
@@ -77,22 +75,11 @@ const Nav = () => {
           </svg>
 
           <div className="overflow-hidden">
-            {/* Always visible on mobile, hover-reveal on desktop */}
             <motion.span
-              className="font-mono text-base text-green whitespace-nowrap md:hidden block"
+              className="font-mono text-base text-green whitespace-nowrap block"
               initial={{ x: -24, opacity: 0, width: 0 }}
               animate={{ x: 0, opacity: 1, width: 'auto' }}
-              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
-            >
-              Clement&nbsp;<span className="text-lightest-slate">Raymond</span>
-            </motion.span>
-            <motion.span
-              className="font-mono text-base text-green whitespace-nowrap hidden md:block"
-              variants={{
-                rest: { x: -24, opacity: 0, width: 0 },
-                hover: { x: 0, opacity: 1, width: 'auto' },
-              }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.5 }}
             >
               Clement&nbsp;<span className="text-lightest-slate">Raymond</span>
             </motion.span>
