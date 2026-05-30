@@ -1,14 +1,17 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import emailjs from '@emailjs/browser';
-import { MessageCircle, CheckCircle, XCircle, Loader, X } from 'lucide-react';
+import { MessageCircle, Loader, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const WHATSAPP_NUMBER = '2347071663687';
 
 // Custom glassmorphic toast
 const Toast = ({ message, type, onClose }) => {
-  const icons = { success: <CheckCircle size={16} className="text-green flex-shrink-0" />, error: <XCircle size={16} className="text-red-400 flex-shrink-0" />, loading: <Loader size={16} className="text-green flex-shrink-0 animate-spin" /> };
-  const dragY = useRef(0);
+  const icons = {
+    success: <span className="w-2 h-2 rounded-full bg-green flex-shrink-0" />,
+    error:   <span className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0" />,
+    loading: <Loader size={14} className="text-green flex-shrink-0 animate-spin" />,
+  };
   return (
     <motion.div
       initial={{ y: -60, opacity: 0 }}
@@ -19,9 +22,9 @@ const Toast = ({ message, type, onClose }) => {
       dragConstraints={{ top: -100, bottom: 10 }}
       dragElastic={{ top: 0.5, bottom: 0 }}
       onDragEnd={(_, info) => { if (info.offset.y < -30) onClose(); }}
-      className="flex items-center gap-3 px-4 py-3 rounded-lg cursor-grab active:cursor-grabbing select-none"
+      className="flex items-center gap-3 px-4 py-3 rounded-lg cursor-grab active:cursor-grabbing select-none w-full"
       style={{
-        background: 'rgba(17,34,64,0.80)',
+        background: 'rgba(17,34,64,0.85)',
         backdropFilter: 'blur(14px)',
         WebkitBackdropFilter: 'blur(14px)',
         border: '1px solid rgba(100,255,218,0.2)',
@@ -29,14 +32,12 @@ const Toast = ({ message, type, onClose }) => {
         fontFamily: 'Geist Mono, monospace',
         fontSize: '13px',
         color: '#ccd6f6',
-        minWidth: '280px',
-        maxWidth: '420px',
       }}
     >
       {icons[type]}
       <span className="flex-1">{message}</span>
-      <button onClick={onClose} className="text-slate/50 hover:text-green transition-colors ml-2">
-        <X size={14} />
+      <button onClick={onClose} className="text-slate/40 hover:text-green transition-colors ml-2 flex-shrink-0">
+        <X size={13} />
       </button>
     </motion.div>
   );
@@ -100,7 +101,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 max-w-xl mx-auto text-center">
       {/* Toast portal */}
-      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 items-center">
+      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[90vw] max-w-md flex flex-col gap-2">
         <AnimatePresence>
           {toasts.map(t => <Toast key={t.id} {...t} onClose={() => remove(t.id)} />)}
         </AnimatePresence>

@@ -135,7 +135,7 @@ const Nav = () => {
         </button>
       </nav>
 
-      {/* Mobile menu — rendered outside nav to avoid layout issues */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -143,7 +143,8 @@ const Nav = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed top-0 right-0 bottom-0 w-3/4 max-w-xs bg-[#112240] flex flex-col items-center justify-center z-50 shadow-2xl"
+            style={{ backgroundColor: '#112240' }}
+            className="fixed top-0 right-0 bottom-0 w-3/4 max-w-xs flex flex-col items-center justify-center z-[55] shadow-2xl"
           >
             <ol className="flex flex-col items-center gap-8 list-none font-mono text-sm mb-8 w-full px-8">
               {navLinks.map(({ name, url }, i) => (
