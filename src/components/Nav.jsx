@@ -40,25 +40,29 @@ const Nav = () => {
           initial="rest"
           animate="rest"
         >
-          <motion.svg
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 100 100"
             className="w-9 h-9 flex-shrink-0"
-            variants={{ rest: { rotate: 0 }, hover: { rotate: 360 } }}
-            transition={{ duration: 0.6, ease: 'easeInOut' }}
           >
-            <motion.polygon
-              points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"
-              fill="none"
-              stroke="#64ffda"
-              strokeWidth="5"
-              variants={{ rest: { opacity: 1 }, hover: { opacity: 0.4 } }}
-            />
-            <motion.polygon
-              points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"
-              variants={{ rest: { fill: 'transparent' }, hover: { fill: 'rgba(100,255,218,0.1)' } }}
-              stroke="none"
-            />
+            <motion.g
+              style={{ transformOrigin: '50px 50px' }}
+              variants={{ rest: { rotate: 0 }, hover: { rotate: 360 } }}
+              transition={{ duration: 0.6, ease: 'easeInOut' }}
+            >
+              <motion.polygon
+                points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"
+                fill="none"
+                stroke="#64ffda"
+                strokeWidth="5"
+                variants={{ rest: { opacity: 1 }, hover: { opacity: 0.4 } }}
+              />
+              <motion.polygon
+                points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"
+                variants={{ rest: { fill: 'transparent' }, hover: { fill: 'rgba(100,255,218,0.1)' } }}
+                stroke="none"
+              />
+            </motion.g>
             <text
               x="50%"
               y="50%"
@@ -70,7 +74,7 @@ const Nav = () => {
             >
               C
             </text>
-          </motion.svg>
+          </svg>
 
           <div className="overflow-hidden">
             <motion.span
