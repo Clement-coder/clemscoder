@@ -14,6 +14,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Resume from './pages/Resume';
+import NotFound from './pages/NotFound';
 import PageProgress from './components/PageProgress';
 
 const ScrollToTop = () => {
