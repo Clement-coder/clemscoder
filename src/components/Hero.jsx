@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -8,18 +8,45 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.5, delay },
 });
 
+const TYPE_SPEED = 80;
+const DELETE_SPEED = 40;
+const PAUSE = 1500;
+
+const TypingName = () => {
+  const text = 'Clement Raymond.';
+  const [displayed, setDisplayed] = useState('');
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+    if (!deleting && displayed.length < text.length) {
+      timeout = setTimeout(() => setDisplayed(text.slice(0, displayed.length + 1)), TYPE_SPEED);
+    } else if (!deleting && displayed.length === text.length) {
+      timeout = setTimeout(() => setDeleting(true), PAUSE);
+    } else if (deleting && displayed.length > 0) {
+      timeout = setTimeout(() => setDisplayed(text.slice(0, displayed.length - 1)), DELETE_SPEED);
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false);
+    }
+    return () => clearTimeout(timeout);
+  }, [displayed, deleting]);
+
+  return (
+    <span>
+      {displayed}
+      <span className="animate-pulse text-green">|</span>
+    </span>
+  );
+};
+
 const Hero = () => (
   <section className="min-h-screen flex flex-col justify-center pt-24 pb-16 text-center sm:text-left">
     <motion.p {...fadeUp(0.2)} className="font-mono text-green text-base mb-5">
       Hi, my name is
     </motion.p>
 
-    <motion.h1 {...fadeUp(0.3)} className="text-4xl sm:text-6xl md:text-7xl font-bold text-lightest-slate leading-tight mb-4 whitespace-nowrap">
-      <img
-        src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=48&pause=1000&color=CCD6F6&center=false&vCenter=true&width=520&height=60&lines=Clement+Raymond."
-        alt="Clement Raymond."
-        className="inline-block max-w-full"
-      />
+    <motion.h1 {...fadeUp(0.3)} className="text-4xl sm:text-6xl md:text-7xl font-bold text-lightest-slate leading-tight mb-4">
+      <TypingName />
     </motion.h1>
 
     <motion.h2 {...fadeUp(0.4)} className="text-2xl sm:text-4xl md:text-5xl font-bold text-slate leading-tight mb-8">
