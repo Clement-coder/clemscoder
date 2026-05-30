@@ -45,7 +45,7 @@ const Nav = () => {
               style={{ transformOrigin: '50px 50px' }}
               initial={{ rotate: 0 }}
               animate={{ rotate: 360 }}
-              transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.2 }}
+              transition={{ duration: 1.2, ease: 'easeInOut', delay: 0.3 }}
               whileHover={{ rotate: 720 }}
               whileTap={{ rotate: 720 }}
             >
@@ -79,7 +79,7 @@ const Nav = () => {
               className="font-mono text-base text-green whitespace-nowrap block"
               initial={{ x: -24, opacity: 0, width: 0 }}
               animate={{ x: 0, opacity: 1, width: 'auto' }}
-              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.5 }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.9 }}
             >
               Clement&nbsp;<span className="text-lightest-slate">Raymond</span>
             </motion.span>
