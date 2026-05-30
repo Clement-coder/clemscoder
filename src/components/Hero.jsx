@@ -40,7 +40,7 @@ const TypingName = () => {
 };
 
 const Hero = () => (
-  <section className="min-h-screen flex flex-col justify-center pt-24 pb-16 text-center sm:text-left">
+  <section className="min-h-screen flex flex-col justify-center pt-24 pb-16 text-left">
     <motion.p {...fadeUp(0.2)} className="font-mono text-green text-base mb-5">
       Hi, my name is
     </motion.p>
@@ -53,7 +53,7 @@ const Hero = () => (
       I build for the web, mobile & blockchain.
     </motion.h2>
 
-    <motion.p {...fadeUp(0.5)} className="max-w-xl text-slate text-lg leading-relaxed mb-12 mx-auto sm:mx-0">
+    <motion.p {...fadeUp(0.5)} className="max-w-xl text-slate text-lg leading-relaxed mb-12">
       I'm a full-stack engineer and blockchain developer based in Jos, Nigeria. I specialize in
       building exceptional digital experiences — from pixel-perfect UIs and mobile apps to
       production APIs, decentralized Web3 applications, and smart contracts.
