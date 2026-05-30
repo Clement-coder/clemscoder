@@ -14,7 +14,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Resume from './pages/Resume';
-import NotFound from './pages/NotFound';
+import PageProgress from './components/PageProgress';
 
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
@@ -81,6 +81,7 @@ function Home() {
 export default function App() {
   return (
     <BrowserRouter>
+      <PageProgress />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />
