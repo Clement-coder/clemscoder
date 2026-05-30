@@ -22,7 +22,7 @@ const featured = [
     image: FoodraImage,
     tags: ['Next.js', 'Solidity', 'Web3', 'AgriTech'],
     github: 'https://github.com/Clement-coder/foodra-platform',
-    live: 'https://foodra-platform.vercel.app/',
+    live: 'https://www.foodramarket.com/',
   },
   {
     title: 'CeloTasks',
