@@ -107,7 +107,7 @@ const Nav = () => {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 z-50 relative"
+          className="md:hidden flex flex-col gap-1.5 z-[60] relative"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
@@ -115,42 +115,56 @@ const Nav = () => {
           <span className={`block w-6 h-0.5 bg-green transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
           <span className={`block w-6 h-0.5 bg-green transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
-
-        {/* Mobile menu — AnimatePresence enables exit animation */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-light-navy flex flex-col items-center justify-center z-40"
-            >
-              <ol className="flex flex-col items-center gap-8 list-none font-mono text-sm mb-8">
-                {navLinks.map(({ name, url }, i) => (
-                  <li key={name}>
-                    <a
-                      href={url}
-                      onClick={() => setMenuOpen(false)}
-                      className="text-lightest-slate hover:text-green transition-colors text-lg"
-                    >
-                      <div className="text-green text-sm mb-1 text-center">0{i + 1}.</div>
-                      {name}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-              <Link
-                to="/resume"
-                onClick={() => setMenuOpen(false)}
-                className="font-mono text-sm text-green border border-green rounded px-8 py-4 hover:bg-green/10 transition-colors"
-              >
-                Resume
-              </Link>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
+
+      {/* Mobile menu — rendered outside nav to avoid layout issues */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="fixed top-0 right-0 bottom-0 w-3/4 max-w-xs bg-[#112240] flex flex-col items-center justify-center z-50 shadow-2xl"
+          >
+            <ol className="flex flex-col items-center gap-8 list-none font-mono text-sm mb-8 w-full px-8">
+              {navLinks.map(({ name, url }, i) => (
+                <li key={name} className="w-full text-center">
+                  <a
+                    href={url}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-lightest-slate hover:text-green transition-colors text-lg"
+                  >
+                    <div className="text-green text-sm mb-1">0{i + 1}.</div>
+                    {name}
+                  </a>
+                </li>
+              ))}
+            </ol>
+            <Link
+              to="/resume"
+              onClick={() => setMenuOpen(false)}
+              className="font-mono text-sm text-green border border-green rounded px-8 py-4 hover:bg-green/10 transition-colors"
+            >
+              Resume
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Backdrop */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            onClick={() => setMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };
