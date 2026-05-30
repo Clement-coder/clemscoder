@@ -77,8 +77,17 @@ const Nav = () => {
           </svg>
 
           <div className="overflow-hidden">
+            {/* Always visible on mobile, hover-reveal on desktop */}
             <motion.span
-              className="font-mono text-base text-green whitespace-nowrap block"
+              className="font-mono text-base text-green whitespace-nowrap md:hidden block"
+              initial={{ x: -24, opacity: 0, width: 0 }}
+              animate={{ x: 0, opacity: 1, width: 'auto' }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
+            >
+              Clement&nbsp;<span className="text-lightest-slate">Raymond</span>
+            </motion.span>
+            <motion.span
+              className="font-mono text-base text-green whitespace-nowrap hidden md:block"
               variants={{
                 rest: { x: -24, opacity: 0, width: 0 },
                 hover: { x: 0, opacity: 1, width: 'auto' },
