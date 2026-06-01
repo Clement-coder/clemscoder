@@ -5,18 +5,34 @@ import { Link } from 'react-router-dom';
 
 const jobs = [
   {
+    company: 'Foodra',
+    url: 'https://www.foodramarket.com/',
+    title: 'Co-Founder & Lead Engineer',
+    range: '2024 — Present',
+    badge: 'Co-Founder',
+    stack: ['Next.js', 'Solidity', 'Web3', 'AI', 'AgriTech', 'Node.js'],
+    duties: [
+      <>Co-founded <span className="text-lightest-slate font-medium">Foodra</span> — a blockchain-powered AgriTech platform bridging African smallholder farmers to credit, insurance, inputs, and global markets.</>,
+      <><span className="text-green font-medium">Vision:</span> Contribute towards an Africa that does not depend on the outside world to feed her — using the least available resources to maximize African food production and supply chain capacity.</>,
+      <><span className="text-green font-medium">Mission:</span> Offer value to African farmers through sustainable practices, a fair supply chain, and farmer empowerment through technology and market access.</>,
+      <>Architected the full-stack platform: <span className="text-lightest-slate font-medium">farmer identity on-chain, AI credit scoring, market access dashboard</span>, and smart contract-based payment rails.</>,
+      <>Led product, engineering, and go-to-market strategy — from zero to a <a href="https://www.foodramarket.com/" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">live production platform</a>.</>,
+      <>Integrated <span className="text-lightest-slate font-medium">DeFi lending primitives</span> to give unbanked farmers access to micro-credit without traditional collateral.</>,
+    ],
+  },
+  {
     company: 'Blockfuse Labs',
     url: 'https://blockfuselabs.com',
     title: 'Blockchain Developer & Web3 Innovator',
-    range: '2025 — Present',
+    range: '2024 — Present',
     badge: 'Current',
-    stack: ['Solidity', 'React', 'Next.js', 'Hardhat', 'Web3.js', 'USDC'],
+    stack: ['Solidity', 'React', 'Next.js', 'Hardhat', 'Web3.js', 'USDC', 'Cairo'],
     duties: [
       <>Architect and ship <span className="text-lightest-slate font-medium">production-grade smart contracts</span> deployed on Ethereum, Base, and Starknet — optimized for gas efficiency and security.</>,
-      <>Contributed to <span className="text-green font-medium">open-source projects</span> including <a href="https://github.com/drips-network" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">Drips Network</a> (decentralized funding protocol) and multiple Web3 tooling repos.</>,
       <>Built <span className="text-lightest-slate font-medium">RecurChain</span> — a live recurring crypto payment system on Base using USDC and autonomous payment agents.</>,
+      <>Explored and integrated <span className="text-lightest-slate font-medium">Account Abstraction (ERC-4337)</span> for gasless wallet UX on Starknet via the Kizo Gasless Wallet project.</>,
       <>Mentored a cohort of <span className="text-lightest-slate font-medium">10+ junior developers</span> on React, Solidity, and DeFi fundamentals.</>,
-      <>Explored and integrated <span className="text-lightest-slate font-medium">Account Abstraction (ERC-4337)</span> for gasless wallet UX on Starknet.</>,
+      <>Contributed to internal tooling, developer education, and the Blockfuse open-source ecosystem.</>,
     ],
   },
   {
@@ -27,38 +43,43 @@ const jobs = [
     badge: 'Active',
     stack: ['Solidity', 'TypeScript', 'React', 'Cairo', 'Rust'],
     duties: [
+      <>Active contributor on <a href="https://gitcoin.co" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">Gitcoin</a> — funded and contributed to public goods projects in the Web3 ecosystem.</>,
+      <>Contributor on <a href="https://app.talentprotocol.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">Talent Protocol</a> — building on-chain reputation and developer identity.</>,
+      <>Active on <a href="https://onlydust.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">OnlyDust</a>, <a href="https://www.codetriage.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">CodeTriage</a>, and <a href="https://bountysource.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">BountySource</a> — picking up bounties and triaging issues across open-source repos.</>,
+      <>Participated in the <span className="text-lightest-slate font-medium">Hedera Hackathon</span> — built a decentralized solution leveraging Hedera's hashgraph consensus and token service.</>,
       <>Contributed to <a href="https://github.com/drips-network" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">Drips Network</a> — a protocol for streaming money and funding open-source software on-chain.</>,
-      <>Submitted PRs and bug fixes to multiple <span className="text-lightest-slate font-medium">Web3 tooling libraries</span> across the Ethereum and Starknet ecosystems.</>,
-      <>Maintained and published <span className="text-lightest-slate font-medium">web3-contract-collection</span> — a reference library of production Solidity patterns used by other developers.</>,
-      <>Active on GitHub with consistent contributions — smart contracts, frontend integrations, and developer tooling.</>,
+      <>Maintained <span className="text-lightest-slate font-medium">web3-contract-collection</span> — a reference library of production Solidity patterns used by other developers.</>,
     ],
   },
   {
     company: 'Personal Projects',
     url: 'https://github.com/Clement-coder',
     title: 'Full Stack & Web3 Developer',
-    range: '2023 — 2025',
+    range: '2023 — Present',
     badge: null,
-    stack: ['React', 'Node.js', 'Next.js', 'Tailwind', 'MongoDB'],
+    stack: ['React', 'Node.js', 'Next.js', 'Tailwind', 'MongoDB', 'Solidity'],
     duties: [
-      <>Shipped <span className="text-lightest-slate font-medium">11 production projects</span> spanning DeFi, NFT marketplaces, AI agents, and AgriTech — all live on Vercel.</>,
-      <>Built <span className="text-lightest-slate font-medium">AxiomSphere</span>, a decentralized AI agent platform with on-chain micropayments and autonomous task execution.</>,
-      <>Developed <span className="text-lightest-slate font-medium">Foodra</span>, a blockchain-powered agricultural platform connecting farmers to credit, insurance, and markets.</>,
-      <>Designed and built this portfolio from scratch — pixel-perfect, fully responsive, and animated.</>,
+      <>Shipped <span className="text-lightest-slate font-medium">11+ production projects</span> spanning DeFi, NFT platforms, AgriTech, e-commerce, and developer tools — all live on Vercel.</>,
+      <>Built <span className="text-lightest-slate font-medium">CeloTasks</span> — a MiniPay-compatible micro-task protocol on Celo with on-chain reputation and instant payments.</>,
+      <>Built <span className="text-lightest-slate font-medium">TaskFlow</span> — a decentralized task OS for teams on Stacks with wallet-native collaboration.</>,
+      <>Built <span className="text-lightest-slate font-medium">Plateau Potatoes</span> — a farm-to-doorstep e-commerce platform for fresh produce from Jos Plateau.</>,
+      <>Built <span className="text-lightest-slate font-medium">Cipherlink</span> — secure message encryption and sharing with local history tracking.</>,
+      <>Designed and built this portfolio from scratch — pixel-perfect, fully responsive, and animated with Framer Motion.</>,
     ],
   },
   {
     company: 'Blockfuse Intern',
     url: 'https://blockfuselabs.com',
     title: 'Frontend & Backend Developer Intern',
-    range: '2022 — 2023',
+    range: '2023 — 2024',
     badge: null,
-    stack: ['React', 'JavaScript', 'Solidity', 'CSS'],
+    stack: ['React', 'JavaScript', 'Solidity', 'Node.js', 'CSS'],
     duties: [
-      <>Integrated smart contract calls into React frontends using <span className="text-lightest-slate font-medium">ethers.js</span> and Web3.js.</>,
-      <>Deployed and tested contracts on Goerli and Sepolia testnets, learning the full DApp development lifecycle.</>,
-      <>Collaborated on UI/UX designs that became the foundation for Blockfuse's internal tooling.</>,
-      <>Went from zero blockchain knowledge to shipping a working DApp in under 6 months.</>,
+      <>Integrated smart contract calls into React frontends using <span className="text-lightest-slate font-medium">ethers.js</span> and Web3.js — bridging on-chain logic with polished UIs.</>,
+      <>Deployed and tested contracts on Goerli and Sepolia testnets, learning the full DApp development lifecycle end-to-end.</>,
+      <>Built and shipped backend REST APIs with <span className="text-lightest-slate font-medium">Node.js and Express</span> — handling auth, data persistence, and third-party integrations.</>,
+      <>Collaborated on UI/UX designs that became the foundation for Blockfuse's internal tooling and client projects.</>,
+      <>Went from zero blockchain knowledge to <span className="text-lightest-slate font-medium">shipping a working DApp in under 6 months</span>.</>,
     ],
   },
 ];
@@ -286,13 +307,13 @@ const Experience = () => {
       <h2 className="numbered-heading">Where I've Worked</h2>
 
       <div ref={ref} className="fade-up flex flex-col sm:flex-row gap-0">
-        {/* Tab list */}
-        <div className="flex sm:flex-col overflow-x-auto sm:overflow-visible border-b sm:border-b-0 sm:border-l border-lightest-navy min-w-max">
+        {/* Tab list — horizontal scroll on mobile, vertical on desktop */}
+        <div className="flex sm:flex-col overflow-x-auto sm:overflow-visible border-b sm:border-b-0 sm:border-l border-lightest-navy scrollbar-none" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {jobs.map((job, i) => (
             <button
               key={job.company + i}
               onClick={() => setActive(i)}
-              className={`font-mono text-sm px-5 py-3 text-left whitespace-nowrap transition-all duration-200 border-b-2 sm:border-b-0 sm:border-l-2 -mb-px sm:-ml-px ${
+              className={`font-mono text-sm px-5 py-3 text-left whitespace-nowrap transition-all duration-200 border-b-2 sm:border-b-0 sm:border-l-2 -mb-px sm:-ml-px flex-shrink-0 ${
                 active === i
                   ? 'text-green border-green bg-light-navy'
                   : 'text-slate border-transparent hover:text-green hover:bg-light-navy/50'
