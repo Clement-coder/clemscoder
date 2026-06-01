@@ -7,6 +7,7 @@ const navLinks = [
   { name: 'Experience', url: '#experience' },
   { name: 'GitHub', url: '#github' },
   { name: 'Projects', url: '#projects' },
+  { name: 'Gallery', url: '#gallery' },
   { name: 'Contact', url: '#contact' },
 ];
 

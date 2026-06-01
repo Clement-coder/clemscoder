@@ -11,9 +11,11 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
+import GalleryPreview from './components/GalleryPreview';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Resume from './pages/Resume';
+import Gallery from './pages/Gallery';
 import NotFound from './pages/NotFound';
 import PageProgress from './components/PageProgress';
 
@@ -71,6 +73,7 @@ function Home() {
         <About />
         <Experience />
         <Projects />
+        <GalleryPreview />
         <Contact />
       </main>
       <Footer />
@@ -86,6 +89,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
