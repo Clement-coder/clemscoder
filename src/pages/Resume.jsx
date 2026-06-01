@@ -9,38 +9,38 @@ const S = {
     background: '#fff',
     color: '#1a1a2e',
     fontFamily: "'Inter', 'Segoe UI', Arial, sans-serif",
-    fontSize: '13px',
-    lineHeight: '1.5',
+    fontSize: '14px',
+    lineHeight: '1.6',
     maxWidth: '860px',
     margin: '0 auto',
-    padding: '48px 52px',
+    padding: '40px 44px',
   },
-  name: { fontSize: '28px', fontWeight: '700', color: '#0a192f', letterSpacing: '-0.5px', margin: 0 },
-  title: { fontSize: '14px', color: '#2563eb', fontWeight: '600', marginTop: '4px' },
-  contactRow: { display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '10px', fontSize: '12px', color: '#475569' },
+  name: { fontSize: '32px', fontWeight: '700', color: '#0a192f', letterSpacing: '-0.5px', margin: 0 },
+  title: { fontSize: '15px', color: '#2563eb', fontWeight: '600', marginTop: '5px' },
+  contactRow: { display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '10px', fontSize: '12.5px', color: '#475569' },
   contactItem: { display: 'flex', alignItems: 'center', gap: '5px', color: '#475569', textDecoration: 'none' },
   divider: { border: 'none', borderTop: '2px solid #0a192f', margin: '16px 0 20px' },
   sectionTitle: {
-    fontSize: '11px', fontWeight: '700', color: '#2563eb', letterSpacing: '1.5px',
+    fontSize: '11.5px', fontWeight: '700', color: '#2563eb', letterSpacing: '1.5px',
     textTransform: 'uppercase', marginBottom: '10px', marginTop: '20px',
     borderBottom: '1px solid #e2e8f0', paddingBottom: '4px',
   },
   twoCol: { display: 'grid', gridTemplateColumns: '1fr 210px', gap: '32px', alignItems: 'start' },
   jobHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '4px' },
-  jobTitle: { fontWeight: '700', color: '#0a192f', fontSize: '13px' },
+  jobTitle: { fontWeight: '700', color: '#0a192f', fontSize: '13.5px' },
   jobCompany: { color: '#2563eb', fontWeight: '600', textDecoration: 'none' },
-  jobRange: { fontSize: '11px', color: '#94a3b8', whiteSpace: 'nowrap' },
+  jobRange: { fontSize: '11.5px', color: '#94a3b8', whiteSpace: 'nowrap' },
   ul: { margin: '6px 0 12px 0', paddingLeft: '16px' },
-  li: { marginBottom: '3px', color: '#334155', fontSize: '12.5px' },
+  li: { marginBottom: '4px', color: '#334155', fontSize: '13px' },
   tag: {
     display: 'inline-block', background: '#f1f5f9', border: '1px solid #e2e8f0',
-    borderRadius: '4px', padding: '1px 7px', fontSize: '11px', color: '#475569', marginRight: '4px', marginBottom: '4px',
+    borderRadius: '4px', padding: '2px 8px', fontSize: '11.5px', color: '#475569', marginRight: '4px', marginBottom: '4px',
   },
-  projectTitle: { fontWeight: '700', color: '#0a192f', fontSize: '12.5px' },
-  projectLink: { color: '#2563eb', fontSize: '11px', textDecoration: 'none' },
-  skillGroup: { marginBottom: '7px' },
-  skillLabel: { fontWeight: '700', color: '#0a192f', fontSize: '11px', minWidth: '80px', display: 'inline-block' },
-  skillVal: { color: '#475569', fontSize: '12px' },
+  projectTitle: { fontWeight: '700', color: '#0a192f', fontSize: '13px' },
+  projectLink: { color: '#2563eb', fontSize: '11.5px', textDecoration: 'none' },
+  skillGroup: { marginBottom: '8px' },
+  skillLabel: { fontWeight: '700', color: '#0a192f', fontSize: '11.5px', minWidth: '80px', display: 'inline-block' },
+  skillVal: { color: '#475569', fontSize: '12.5px' },
 };
 
 const jobs = [
@@ -157,9 +157,9 @@ export default function Resume() {
             <span className="ml-4 font-mono text-xs text-slate">resume — Clement Raymond</span>
           </div>
 
-          <div className="rounded-b-lg overflow-hidden border border-lightest-navy/40 shadow-2xl shadow-black/50">
+          <div className="rounded-b-lg overflow-x-auto border border-lightest-navy/40 shadow-2xl shadow-black/50">
             {/* The printable resume */}
-            <div ref={printRef} style={S.page}>
+            <div ref={printRef} style={{ ...S.page, minWidth: '600px' }}>
 
               {/* Header with photo */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '24px' }}>
@@ -179,7 +179,7 @@ export default function Resume() {
                   src={portrait}
                   alt="Clement Raymond"
                   style={{
-                    width: '90px', height: '90px', borderRadius: '8px',
+                    width: '120px', height: '120px', borderRadius: '10px',
                     objectFit: 'cover', objectPosition: 'top',
                     border: '2px solid #e2e8f0', flexShrink: 0,
                   }}
