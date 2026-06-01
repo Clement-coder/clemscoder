@@ -64,7 +64,7 @@ function Home() {
   if (isLoading) return <Loader />;
 
   return (
-    <div className="min-h-screen bg-navy overflow-x-hidden" style={{ transform: 'translateZ(0)', isolation: 'isolate' }}>
+    <div className="min-h-screen bg-navy overflow-x-hidden">
       <Nav />
       <Social />
       <Email />
