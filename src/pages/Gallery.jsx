@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { X, ChevronLeft, ChevronRight, ArrowLeft, Play } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ArrowLeft, Play, ZoomIn } from 'lucide-react';
 import { galleryItems } from '../assets/img/index.js';
 
 function MediaTile({ item }) {
@@ -47,6 +47,91 @@ function LightboxMedia({ item }) {
   );
 }
 
+function GalleryTile({ item, index, onClick }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="break-inside-avoid relative cursor-pointer overflow-hidden rounded-2xl group"
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, delay: Math.min(index * 0.025, 0.7) }}
+      whileHover={{ boxShadow: '0 0 0 2px #64ffda55, 0 8px 32px rgba(100,255,218,0.12)' }}
+      whileTap={{ scale: 0.97 }}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      onClick={onClick}
+      style={{ willChange: 'transform' }}
+    >
+      <MediaTile item={item} />
+
+      {/* Always-on bottom vignette */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
+        style={{ background: 'linear-gradient(to top, rgba(10,25,47,0.75) 0%, transparent 100%)' }}
+      />
+
+      {/* Mobile: teal accent bar — always visible */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-green/60 to-transparent" />
+
+      {/* Mobile: index badge — always visible */}
+      <div className="absolute bottom-2 left-2 font-mono text-xs text-green/80">
+        {String(index + 1).padStart(2, '0')}
+      </div>
+
+      {/* Hover: scan-line sweep */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        initial={{ y: '-100%', opacity: 0 }}
+        animate={hovered ? { y: '100%', opacity: [0, 0.4, 0] } : { y: '-100%', opacity: 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(100,255,218,0.15) 50%, transparent 60%)' }}
+      />
+
+      {/* Hover: dark overlay */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.25 }}
+        style={{ background: 'linear-gradient(135deg, rgba(100,255,218,0.07) 0%, rgba(10,25,47,0.55) 100%)' }}
+      />
+
+      {/* Hover: spring-scale center icon */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          animate={{ scale: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+          className="w-12 h-12 rounded-full border-2 border-green bg-navy/50 backdrop-blur-sm flex items-center justify-center shadow-xl shadow-green/30"
+        >
+          {item.type === 'video'
+            ? <Play size={18} className="text-green ml-0.5" />
+            : <ZoomIn size={16} className="text-green" />
+          }
+        </motion.div>
+      </div>
+
+      {/* Hover: sliding corner accents */}
+      <motion.div
+        className="absolute top-2 left-2 w-5 h-5 border-t-2 border-l-2 border-green rounded-tl"
+        animate={{ opacity: hovered ? 1 : 0, x: hovered ? 0 : -4, y: hovered ? 0 : -4 }}
+        transition={{ duration: 0.2 }}
+      />
+      <motion.div
+        className="absolute bottom-2 right-2 w-5 h-5 border-b-2 border-r-2 border-green rounded-br"
+        animate={{ opacity: hovered ? 1 : 0, x: hovered ? 0 : 4, y: hovered ? 0 : 4 }}
+        transition={{ duration: 0.2 }}
+      />
+
+      {/* Video badge */}
+      {item.type === 'video' && (
+        <div className="absolute top-2 right-2 flex items-center gap-1 font-mono text-xs text-green bg-navy/75 backdrop-blur-sm px-2 py-0.5 rounded-full border border-green/30">
+          <Play size={9} className="fill-green" /> video
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 export default function Gallery() {
   const [lightbox, setLightbox] = useState(null);
 
@@ -67,49 +152,33 @@ export default function Gallery() {
   }, [lightbox, prev, next]);
 
   return (
-    <div className="min-h-screen bg-navy px-6 sm:px-10 lg:px-16 py-24 relative overflow-x-hidden">
-
-      {/* Ambient background glows */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-green/3 rounded-full blur-3xl" />
-      </div>
+    <div
+      className="min-h-screen bg-navy px-6 sm:px-10 lg:px-16 py-24 relative overflow-x-hidden"
+      style={{ transform: 'translateZ(0)' }}
+    >
+      {/* Ambient glows — absolute not fixed to avoid scroll repaint */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-green/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-green/3 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
 
-        {/* Back — matches Resume page */}
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 font-mono text-sm text-slate hover:text-green transition-colors group mb-10"
-          >
+          <Link to="/" className="inline-flex items-center gap-2 font-mono text-sm text-slate hover:text-green transition-colors group mb-10">
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             cd ~/home
           </Link>
         </motion.div>
 
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-14"
         >
-          <p className="font-mono text-green text-sm mb-3 tracking-widest uppercase">05. Gallery</p>
-          <h1 className="font-mono text-4xl sm:text-5xl font-bold text-lightest-slate leading-tight">
-            Moments &amp; Memories
-          </h1>
+          <h1 className="numbered-heading">Moments &amp; Memories</h1>
           <p className="text-slate mt-3 max-w-lg text-base">
             A visual journey through events, hackathons, and behind-the-scenes moments.
           </p>
-          {/* Animated teal underline */}
-          <motion.div
-            className="mt-5 h-px bg-gradient-to-r from-green via-green/40 to-transparent"
-            initial={{ width: 0 }}
-            animate={{ width: '180px' }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          />
-          {/* Stats pill */}
           <div className="mt-5 inline-flex items-center gap-2 font-mono text-xs text-slate border border-lightest-navy/60 rounded-full px-4 py-1.5 bg-light-navy/40">
             <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
             {galleryItems.filter(i => i.type === 'image').length} photos &nbsp;·&nbsp;
@@ -117,53 +186,9 @@ export default function Gallery() {
           </div>
         </motion.div>
 
-        {/* Masonry grid */}
         <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
           {galleryItems.map((item, i) => (
-            <motion.div
-              key={i}
-              className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-2xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: Math.min(i * 0.025, 0.7) }}
-              onClick={() => open(i)}
-            >
-              <MediaTile item={item} />
-
-              {/* Permanent dark vignette at bottom */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(to top, rgba(10,25,47,0.55) 0%, transparent 50%)',
-                }}
-              />
-
-              {/* Hover overlay */}
-              <div className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                style={{ background: 'linear-gradient(135deg, rgba(100,255,218,0.08) 0%, rgba(10,25,47,0.5) 100%)' }}
-              />
-
-              {/* Hover center icon */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-11 h-11 rounded-full border-2 border-green bg-navy/40 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-green/20">
-                  {item.type === 'video'
-                    ? <Play size={16} className="text-green ml-0.5" />
-                    : <span className="text-green text-lg leading-none font-light">⊕</span>
-                  }
-                </div>
-              </div>
-
-              {/* Corner accent lines */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-green/70 rounded-tl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-green/70 rounded-br opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              {/* Video badge — always visible */}
-              {item.type === 'video' && (
-                <div className="absolute top-2 right-2 flex items-center gap-1 font-mono text-xs text-green bg-navy/75 backdrop-blur-sm px-2 py-0.5 rounded-full border border-green/30">
-                  <Play size={9} className="fill-green" /> video
-                </div>
-              )}
-            </motion.div>
+            <GalleryTile key={i} item={item} index={i} onClick={() => open(i)} />
           ))}
         </div>
       </div>
@@ -176,10 +201,9 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{ background: 'rgba(5,15,30,0.97)', backdropFilter: 'blur(20px)' }}
+            style={{ background: 'rgba(5,15,30,0.97)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
             onClick={close}
           >
-            {/* Glow behind active image */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="w-96 h-96 bg-green/5 rounded-full blur-3xl" />
             </div>
@@ -194,45 +218,26 @@ export default function Gallery() {
               onClick={(e) => e.stopPropagation()}
             >
               <LightboxMedia item={galleryItems[lightbox]} />
-
-              {/* Counter pill */}
               <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-mono text-xs text-green bg-light-navy/90 border border-green/20 px-4 py-1.5 rounded-full whitespace-nowrap">
                 {lightbox + 1} <span className="text-slate">/</span> {galleryItems.length}
               </div>
             </motion.div>
 
-            {/* Prev */}
-            <button
-              onClick={(e) => { e.stopPropagation(); prev(); }}
-              aria-label="Previous"
-              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 p-3 rounded-full border border-green/25 text-green bg-navy/60 backdrop-blur-sm hover:bg-green/10 hover:border-green/60 transition-all duration-200"
-            >
+            <button onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Previous"
+              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 p-3 rounded-full border border-green/25 text-green bg-navy/60 backdrop-blur-sm hover:bg-green/10 hover:border-green/60 transition-all duration-200">
               <ChevronLeft size={22} />
             </button>
-
-            {/* Next */}
-            <button
-              onClick={(e) => { e.stopPropagation(); next(); }}
-              aria-label="Next"
-              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 p-3 rounded-full border border-green/25 text-green bg-navy/60 backdrop-blur-sm hover:bg-green/10 hover:border-green/60 transition-all duration-200"
-            >
+            <button onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Next"
+              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 p-3 rounded-full border border-green/25 text-green bg-navy/60 backdrop-blur-sm hover:bg-green/10 hover:border-green/60 transition-all duration-200">
               <ChevronRight size={22} />
             </button>
-
-            {/* Close */}
-            <button
-              onClick={close}
-              aria-label="Close"
-              className="absolute top-4 right-4 p-2 rounded-full border border-green/25 text-green bg-navy/60 backdrop-blur-sm hover:bg-green/10 hover:border-green/60 transition-all duration-200"
-            >
+            <button onClick={close} aria-label="Close"
+              className="absolute top-4 right-4 p-2 rounded-full border border-green/25 text-green bg-navy/60 backdrop-blur-sm hover:bg-green/10 hover:border-green/60 transition-all duration-200">
               <X size={18} />
             </button>
 
-            {/* Keyboard hint */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-xs text-slate/50 hidden sm:flex items-center gap-3">
-              <span>← → navigate</span>
-              <span>·</span>
-              <span>esc close</span>
+              <span>← → navigate</span><span>·</span><span>esc close</span>
             </div>
           </motion.div>
         )}
