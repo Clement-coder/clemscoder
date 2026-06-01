@@ -32,7 +32,7 @@ const TypingName = () => {
   }, [displayed, deleting]);
 
   return (
-    <span style={{ display: 'inline-block', minWidth: '10ch' }}>
+    <span>
       <span style={{ whiteSpace: 'nowrap' }}>{displayed}</span>
       <span
         className="text-green"
@@ -54,7 +54,7 @@ const Hero = () => (
       Hi, my name is
     </motion.p>
 
-    <motion.h1 {...fadeUp(0.3)} className="text-4xl sm:text-6xl md:text-7xl font-bold text-lightest-slate leading-tight mb-4">
+    <motion.h1 {...fadeUp(0.3)} className="text-4xl sm:text-6xl md:text-7xl font-bold text-lightest-slate leading-tight mb-4 whitespace-nowrap">
       <TypingName />
     </motion.h1>
 
