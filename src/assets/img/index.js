@@ -35,6 +35,10 @@ import img34 from './WhatsApp Image 2026-05-31 at 20.08.22 (1).jpeg';
 import img35 from './WhatsApp Image 2026-05-31 at 20.08.22 (2).jpeg';
 import img36 from './WhatsApp Image 2026-05-31 at 20.08.23.jpeg';
 import img37 from './WhatsApp Image 2026-05-31 at 20.08.23 (1).jpeg';
+import img38 from './WhatsApp Image 2026-06-01 at 09.31.36.jpeg';
+import img39 from './WhatsApp Image 2026-06-01 at 09.31.36 (1).jpeg';
+import img40 from './WhatsApp Image 2026-06-01 at 09.32.58.jpeg';
+import img41 from './WhatsApp Image 2026-06-01 at 09.32.58 (1).jpeg';
 import vid1  from './WhatsApp Video 2026-05-31 at 20.08.07.mp4';
 import vid2  from './WhatsApp Video 2026-05-31 at 20.08.08.mp4';
 import vid3  from './WhatsApp Video 2026-05-31 at 20.08.14.mp4';
@@ -52,6 +56,7 @@ export const galleryItems = [
   img(img23), img(img24), img(img25), img(img26), img(img27),
   img(img28), img(img29), img(img30), img(img31), img(img32),
   img(img33), img(img34), img(img35), img(img36), img(img37),
+  img(img38), img(img39), img(img40), img(img41),
   vid(vid4),
 ];
 
