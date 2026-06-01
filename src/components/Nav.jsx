@@ -36,9 +36,10 @@ const Nav = () => {
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
       transition={{ duration: 0.5, delay: 0.1 }}
+      style={{ isolation: 'isolate' }}
       className={`fixed top-0 w-full z-50 px-6 md:px-12 transition-all duration-300 ${
         scrolled ? 'bg-navy/90 backdrop-blur shadow-lg py-4' : 'py-6'
       }`}
@@ -144,8 +145,8 @@ const Nav = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            style={{ backgroundColor: '#112240' }}
             className="fixed top-0 right-0 bottom-0 w-3/4 max-w-xs flex flex-col items-center justify-center z-[55] shadow-2xl"
+            style={{ backgroundColor: '#112240' }}
           >
             <ol className="flex flex-col items-center gap-8 list-none font-mono text-sm mb-8 w-full px-8">
               {navLinks.map(({ name, url }, i) => (
