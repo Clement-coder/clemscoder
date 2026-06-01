@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { X, ChevronLeft, ChevronRight, ArrowLeft, Play, ZoomIn } from 'lucide-react';
 import { galleryItems } from '../assets/img/index.js';
+import ScrollToTop from '../components/ScrollToTop';
 
 function MediaTile({ item }) {
   if (item.type === 'video') {
@@ -152,10 +153,7 @@ export default function Gallery() {
   }, [lightbox, prev, next]);
 
   return (
-    <div
-      className="min-h-screen bg-navy px-6 sm:px-10 lg:px-16 py-24 relative overflow-x-hidden"
-      style={{ transform: 'translateZ(0)' }}
-    >
+    <div className="min-h-screen bg-navy px-6 sm:px-10 lg:px-16 py-24 relative overflow-x-hidden">
       {/* Ambient glows — absolute not fixed to avoid scroll repaint */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-green/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-green/3 rounded-full blur-3xl pointer-events-none" />
@@ -242,6 +240,7 @@ export default function Gallery() {
           </motion.div>
         )}
       </AnimatePresence>
+      <ScrollToTop />
     </div>
   );
 }

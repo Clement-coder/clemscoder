@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Download } from 'lucide-react';
 import portrait from '../assets/clement\'s_portraite.jpeg';
+import ScrollToTop from '../components/ScrollToTop';
 
 const S = {
   page: {
@@ -288,6 +289,7 @@ export default function Resume() {
           </div>
         </motion.div>
       </div>
+      <ScrollToTop />
     </div>
   );
 }
