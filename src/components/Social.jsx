@@ -18,7 +18,7 @@ const Social = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ delay: 1.2, duration: 0.5 }}
-    className="hidden lg:flex fixed bottom-0 left-10 flex-col items-center gap-6 after:content-[''] after:block after:w-px after:h-24 after:bg-light-slate"
+    className="hidden lg:flex fixed bottom-0 left-10 z-40 flex-col items-center gap-5"
   >
     {links.map(({ Icon, href, label }) => (
       <a
@@ -32,6 +32,8 @@ const Social = () => (
         <Icon size={20} />
       </a>
     ))}
+    {/* vertical line to bottom */}
+    <div className="w-px h-24 bg-light-slate/50 mt-1" />
   </motion.div>
 );
 
