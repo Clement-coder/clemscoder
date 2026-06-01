@@ -16,6 +16,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Resume from './pages/Resume';
 import Gallery from './pages/Gallery';
+import ResumeDownload from './pages/ResumeDownload';
 import NotFound from './pages/NotFound';
 import PageProgress from './components/PageProgress';
 
@@ -89,6 +90,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/resume/download" element={<ResumeDownload />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

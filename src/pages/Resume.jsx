@@ -36,6 +36,13 @@ const Resume = () => {
         </div>
 
         <div className="flex items-center gap-3">
+          <Link
+            to="/resume/download"
+            className="flex items-center gap-2 font-mono text-sm text-slate hover:text-green transition-colors"
+          >
+            <ExternalLink size={14} />
+            <span className="hidden sm:inline">Build Resume</span>
+          </Link>
           <a
             href={CV}
             target="_blank"
