@@ -7,6 +7,7 @@ const Email = () => (
     animate={{ opacity: 1 }}
     transition={{ delay: 1.2, duration: 0.5 }}
     className="hidden lg:flex fixed bottom-0 right-10 z-40 flex-col items-center gap-5"
+    style={{ willChange: 'transform' }}
   >
     <a
       href="mailto:chinexzy37@gmail.com"

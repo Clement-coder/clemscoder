@@ -32,9 +32,18 @@ const TypingName = () => {
   }, [displayed, deleting]);
 
   return (
-    <span>
-      {displayed}
-      <span className="animate-pulse text-green">|</span>
+    <span style={{ display: 'inline-block', minWidth: '10ch' }}>
+      <span style={{ whiteSpace: 'nowrap' }}>{displayed}</span>
+      <span
+        className="text-green"
+        style={{
+          display: 'inline-block',
+          width: '2px',
+          marginLeft: '2px',
+          verticalAlign: 'middle',
+          animation: 'cursor-blink 1s step-end infinite',
+        }}
+      >|</span>
     </span>
   );
 };
