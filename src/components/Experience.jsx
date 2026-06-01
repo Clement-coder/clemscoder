@@ -12,11 +12,11 @@ const jobs = [
     badge: 'Co-Founder',
     stack: ['Next.js', 'Solidity', 'Web3', 'AI', 'AgriTech', 'Node.js'],
     duties: [
-      <>Co-founded <span className="text-lightest-slate font-medium">Foodra</span> — a blockchain-powered AgriTech platform bridging African smallholder farmers to credit, insurance, inputs, and global markets.</>,
+      <>Co-founded <a href="https://www.foodramarket.com/" target="_blank" rel="noopener noreferrer" className="text-green hover:underline font-medium">Foodra</a> — a blockchain-powered AgriTech platform bridging African smallholder farmers to credit, insurance, inputs, and global markets.</>,
       <><span className="text-green font-medium">Vision:</span> Contribute towards an Africa that does not depend on the outside world to feed her — using the least available resources to maximize African food production and supply chain capacity.</>,
       <><span className="text-green font-medium">Mission:</span> Offer value to African farmers through sustainable practices, a fair supply chain, and farmer empowerment through technology and market access.</>,
       <>Architected the full-stack platform: <span className="text-lightest-slate font-medium">farmer identity on-chain, AI credit scoring, market access dashboard</span>, and smart contract-based payment rails.</>,
-      <>Led product, engineering, and go-to-market strategy — from zero to a <a href="https://www.foodramarket.com/" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">live production platform</a>.</>,
+      <>Led product, engineering, and go-to-market strategy — from zero to a live production platform with real farmers onboarded.</>,
       <>Integrated <span className="text-lightest-slate font-medium">DeFi lending primitives</span> to give unbanked farmers access to micro-credit without traditional collateral.</>,
     ],
   },
@@ -36,6 +36,21 @@ const jobs = [
     ],
   },
   {
+    company: 'Hackathons',
+    url: '#',
+    title: 'Hackathon Participant & Builder',
+    range: '2023 — Present',
+    badge: 'Builder',
+    stack: ['Solidity', 'Hedera', 'Cairo', 'TypeScript', 'Next.js'],
+    duties: [
+      <><span className="text-green font-medium">🏆 Hedera Hackathon</span> — Built a decentralized solution leveraging <a href="https://hedera.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">Hedera's</a> hashgraph consensus, HTS token service, and HCS for verifiable on-chain messaging.</>,
+      <><span className="text-green font-medium">⚡ ETHGlobal</span> — Participated in global Ethereum hackathons, shipping DeFi and Web3 tooling projects under 48-hour sprints.</>,
+      <><span className="text-green font-medium">🌍 Web3Lagos</span> — Competed in Nigeria's premier Web3 hackathon, building blockchain solutions for African markets.</>,
+      <><span className="text-green font-medium">🔥 Stacks Hackathon</span> — Built <span className="text-lightest-slate font-medium">TaskFlow</span>, a decentralized task OS on Stacks — won recognition for UX and smart contract design.</>,
+      <><span className="text-green font-medium">🌱 Celo Build</span> — Built <span className="text-lightest-slate font-medium">CeloTasks</span>, a MiniPay-compatible micro-task protocol — recognized for mobile-first DeFi UX.</>,
+    ],
+  },
+  {
     company: 'Open Source',
     url: 'https://github.com/Clement-coder',
     title: 'Open Source Contributor',
@@ -43,12 +58,26 @@ const jobs = [
     badge: 'Active',
     stack: ['Solidity', 'TypeScript', 'React', 'Cairo', 'Rust'],
     duties: [
-      <>Active contributor on <a href="https://gitcoin.co" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">Gitcoin</a> — funded and contributed to public goods projects in the Web3 ecosystem.</>,
-      <>Contributor on <a href="https://app.talentprotocol.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">Talent Protocol</a> — building on-chain reputation and developer identity.</>,
-      <>Active on <a href="https://onlydust.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">OnlyDust</a>, <a href="https://www.codetriage.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">CodeTriage</a>, and <a href="https://bountysource.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">BountySource</a> — picking up bounties and triaging issues across open-source repos.</>,
-      <>Participated in the <span className="text-lightest-slate font-medium">Hedera Hackathon</span> — built a decentralized solution leveraging Hedera's hashgraph consensus and token service.</>,
+      <><a href="https://onlydust.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline font-medium">OnlyDust</a> — Contributor on the leading open-source platform for Web3 developers. Picked up issues, shipped PRs, and earned on-chain contribution rewards.</>,
+      <><a href="https://www.codetriage.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline font-medium">CodeTriage</a> — Triaged and resolved issues across multiple open-source repositories, helping maintainers manage backlogs.</>,
+      <><a href="https://bountysource.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline font-medium">BountySource</a> — Claimed and completed bounties on open-source bugs and features across the ecosystem.</>,
       <>Contributed to <a href="https://github.com/drips-network" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">Drips Network</a> — a protocol for streaming money and funding open-source software on-chain.</>,
-      <>Maintained <span className="text-lightest-slate font-medium">web3-contract-collection</span> — a reference library of production Solidity patterns used by other developers.</>,
+      <>Maintained <a href="https://github.com/Clement-coder/web3-contract-collection" target="_blank" rel="noopener noreferrer" className="text-green hover:underline">web3-contract-collection</a> — a reference library of production Solidity patterns used by other developers.</>,
+    ],
+  },
+  {
+    company: 'On-Chain Rep',
+    url: 'https://app.talentprotocol.com',
+    title: 'On-Chain Reputation & Identity',
+    range: '2023 — Present',
+    badge: 'Verified',
+    stack: ['Talent Protocol', 'Gitcoin', 'Passport', 'ENS', 'POAP'],
+    duties: [
+      <><a href="https://app.talentprotocol.com" target="_blank" rel="noopener noreferrer" className="text-green hover:underline font-medium">Talent Protocol</a> — Building verifiable on-chain developer identity and reputation. Passport score reflects real contributions, skills, and community standing.</>,
+      <><a href="https://gitcoin.co" target="_blank" rel="noopener noreferrer" className="text-green hover:underline font-medium">Gitcoin</a> — Active contributor and grant recipient. Funded public goods projects and participated in Gitcoin Grants rounds supporting the Web3 ecosystem.</>,
+      <><a href="https://passport.gitcoin.co" target="_blank" rel="noopener noreferrer" className="text-green hover:underline font-medium">Gitcoin Passport</a> — Verified identity across multiple Web3 platforms, contributing to a high Passport score for Sybil resistance.</>,
+      <><span className="text-lightest-slate font-medium">POAPs & NFT Credentials</span> — Collected proof-of-attendance and contribution NFTs from hackathons, conferences, and on-chain events.</>,
+      <><span className="text-lightest-slate font-medium">GitHub Contributions</span> — Consistent open-source activity tracked on-chain via Talent Protocol's builder score algorithm.</>,
     ],
   },
   {
@@ -102,9 +131,9 @@ const GitHubActivity = () => {
   const [allRepos, setAllRepos] = useState([]);
   const [reposLoading, setReposLoading] = useState(true);
   const [recentEvents, setRecentEvents] = useState([]);
+  const [repoLangs, setRepoLangs] = useState({});
 
   useEffect(() => {
-    // Profile
     fetch(`https://api.github.com/users/${username}`)
       .then(r => r.json())
       .then(data => {
@@ -112,19 +141,14 @@ const GitHubActivity = () => {
         setStats(s => ({ ...s, repos: data.public_repos, followers: data.followers }));
       });
 
-    // PRs
     fetch(`https://api.github.com/search/issues?q=author:${username}+type:pr&per_page=1`)
       .then(r => r.json())
       .then(data => setStats(s => ({ ...s, prs: data.total_count })));
 
-    // Recent public events (contributions)
     fetch(`https://api.github.com/users/${username}/events/public?per_page=30`)
       .then(r => r.json())
-      .then(data => {
-        if (Array.isArray(data)) setRecentEvents(data);
-      });
+      .then(data => { if (Array.isArray(data)) setRecentEvents(data); });
 
-    // All repos — paginate all 3 pages in parallel
     Promise.all([1, 2, 3].map(page =>
       fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated&page=${page}`)
         .then(r => r.json())
@@ -136,6 +160,22 @@ const GitHubActivity = () => {
       setStats(s => ({ ...s, stars, forks }));
       setAllRepos(all);
       setReposLoading(false);
+
+      // Fetch language for forked repos that have no language set
+      const forked = all.filter(r => r.fork && !r.language);
+      Promise.all(
+        forked.slice(0, 12).map(r =>
+          fetch(`https://api.github.com/repos/${r.full_name}/languages`)
+            .then(res => res.json())
+            .then(langs => {
+              const top = Object.keys(langs)[0] || null;
+              return [r.id, top];
+            })
+            .catch(() => [r.id, null])
+        )
+      ).then(results => {
+        setRepoLangs(Object.fromEntries(results));
+      });
     });
   }, []);
 
@@ -143,7 +183,6 @@ const GitHubActivity = () => {
   const forked = allRepos.filter(r => r.fork).sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
   const visible = (repoTab === 'own' ? own : forked).slice(0, 6);
 
-  // Deduplicate recent contributions by repo
   const contributions = recentEvents
     .filter(e => ['PushEvent', 'PullRequestEvent', 'IssuesEvent', 'CreateEvent', 'ForkEvent'].includes(e.type))
     .reduce((acc, e) => {
@@ -155,8 +194,10 @@ const GitHubActivity = () => {
 
   const eventLabel = { PushEvent: 'pushed to', PullRequestEvent: 'opened PR in', IssuesEvent: 'opened issue in', CreateEvent: 'created', ForkEvent: 'forked' };
 
+  const getRepoLang = (repo) => repo.language || repoLangs[repo.id] || null;
+
   return (
-    <div className="mt-16 border border-lightest-navy/40 rounded-lg overflow-hidden">
+    <div className="mt-16 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(100,255,218,0.12)', boxShadow: '0 0 40px rgba(100,255,218,0.04)' }}>
       {/* Profile header */}
       <div className="flex items-center gap-4 px-5 py-4 bg-light-navy border-b border-lightest-navy/40">
         {profile?.avatar_url
@@ -243,38 +284,59 @@ const GitHubActivity = () => {
 
         <div className="grid sm:grid-cols-2 gap-3 p-4">
           {reposLoading
-            ? Array(4).fill(0).map((_, i) => <div key={i} className="h-24 bg-lightest-navy/20 rounded animate-pulse" />)
-            : visible.map(repo => (
-                <a key={repo.id} href={repo.html_url} target="_blank" rel="noopener noreferrer"
-                  className="flex flex-col justify-between p-4 bg-navy border border-lightest-navy/30 rounded hover:border-green/40 transition-colors group">
-                  <div>
-                    <p className="font-mono text-sm text-lightest-slate group-hover:text-green transition-colors truncate mb-1">
-                      {repo.fork ? <span className="text-slate/50 mr-1">⑂</span> : null}{repo.name}
-                    </p>
-                    <p className="text-xs text-slate line-clamp-2 leading-relaxed">
-                      {repo.description || 'No description'}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-4 mt-3">
-                    {repo.language && (
-                      <span className="flex items-center gap-1 font-mono text-xs text-slate">
-                        <span className="w-2.5 h-2.5 rounded-full" style={{ background: langColor[repo.language] || '#8892b0' }} />
-                        {repo.language}
+            ? Array(4).fill(0).map((_, i) => <div key={i} className="h-24 bg-lightest-navy/20 rounded-xl animate-pulse" />)
+            : visible.map(repo => {
+                const lang = getRepoLang(repo);
+                return (
+                  <motion.a
+                    key={repo.id}
+                    href={repo.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col justify-between p-4 bg-navy rounded-xl group relative overflow-hidden"
+                    style={{ border: '1px solid rgba(35,53,84,0.8)' }}
+                    whileHover={{ borderColor: 'rgba(100,255,218,0.35)', boxShadow: '0 0 20px rgba(100,255,218,0.07)' }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {/* Top glow on hover */}
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    <div>
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <p className="font-mono text-sm text-lightest-slate group-hover:text-green transition-colors truncate">
+                          {repo.fork && <span className="text-slate/50 mr-1 text-xs">⑂</span>}{repo.name}
+                        </p>
+                        <ExternalLink size={12} className="text-slate/40 group-hover:text-green/60 transition-colors flex-shrink-0 mt-0.5" />
+                      </div>
+                      <p className="text-xs text-slate line-clamp-2 leading-relaxed">
+                        {repo.description || <span className="italic text-slate/40">No description</span>}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-4 mt-3">
+                      {lang && (
+                        <span className="flex items-center gap-1.5 font-mono text-xs text-slate">
+                          <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: langColor[lang] || '#8892b0' }} />
+                          {lang}
+                        </span>
+                      )}
+                      {repo.stargazers_count > 0 && (
+                        <span className="flex items-center gap-1 font-mono text-xs text-slate">
+                          <Star size={11} className="text-yellow-400/70" /> {repo.stargazers_count}
+                        </span>
+                      )}
+                      {repo.forks_count > 0 && (
+                        <span className="flex items-center gap-1 font-mono text-xs text-slate">
+                          <GitFork size={11} /> {repo.forks_count}
+                        </span>
+                      )}
+                      <span className="ml-auto font-mono text-[10px] text-slate/40">
+                        {new Date(repo.updated_at).toLocaleDateString('en-US', { month: 'short', year: '2-digit' })}
                       </span>
-                    )}
-                    {repo.stargazers_count > 0 && (
-                      <span className="flex items-center gap-1 font-mono text-xs text-slate">
-                        <Star size={11} /> {repo.stargazers_count}
-                      </span>
-                    )}
-                    {repo.forks_count > 0 && (
-                      <span className="flex items-center gap-1 font-mono text-xs text-slate">
-                        <GitFork size={11} /> {repo.forks_count}
-                      </span>
-                    )}
-                  </div>
-                </a>
-              ))
+                    </div>
+                  </motion.a>
+                );
+              })
           }
         </div>
 
